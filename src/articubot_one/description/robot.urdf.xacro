@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
+    
+    <xacro:include filename="robot_core.urdf.xacro" />
+    <xacro:include filename="inertial_macros.xacro" />
+    <xacro:include filename="lidar.xacro" />
+    <xacro:include filename="drive.urdf.xacro" />
+    <xacro:drive_controller/>
+    <xacro:include filename="slider_tr.xacro" />
+    <xacro:include filename="lifter_tr.xacro" />
+
+    <!-- DECRIPTION OF ARM MECHANISM PROPERTIES -->
+    <ros2_control name="gripper_robot_gazebo_system" type="system">
+        <hardware>
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+        </hardware>
+        <xacro:slider_tr/>
+        <xacro:lifter_tr/>
+    </ros2_control>
+    <xacro:robot_controller/>
+    
+</robot>
